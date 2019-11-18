@@ -1,0 +1,6 @@
+<h4>New article</h4>
+<%=react_component('TestComponent')%>
+<%@article.errors.full_messages.each do|error|%>
+<%=error%>
+<%end%>
+<%=render 'form'%>
