@@ -1,5 +1,11 @@
-<%= form_for @article do|f|%>
-<%=f.text_field :title%>
-<%=f.text_area :content%>
-<%=f.submit%>
+<%= form_for @article,:class=>"form-inline" do|f|%>
+<div class="form-group">
+<%=f.label :title%>
+<%=f.text_field :title,:class=>"form-control"%>
+</div>
+<div class="form-group">
+<%=f.label :content%>
+<%=f.text_area :content,:class=> "form-control"%>
+</div>
+<%=f.button :class=> "btn btn-default"%>
 <%end%>
