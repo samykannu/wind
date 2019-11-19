@@ -1,2 +1,5 @@
 <p><%=@article.title%></p>
 <%=@article.content%>
+<%@article.categories.each do|a|%>
+<%=a.name%>
+<%end%>

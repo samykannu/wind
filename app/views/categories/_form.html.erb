@@ -1,0 +1,11 @@
+<%= form_for @category,:class=>"form-inline " do|f|%>
+<div class="form-group">
+<%=f.label :name%>
+<%=f.text_field :name,:class=>"form-control"%>
+</div>
+<div class="form-group">
+<%=f.label :alias_name%>
+<%=f.text_area :alias_name,:class=> "form-control"%>
+</div>
+<%=f.button :class=> "btn btn-default"%>
+<%end%>

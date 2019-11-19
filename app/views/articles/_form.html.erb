@@ -7,5 +7,10 @@
 <%=f.label :content%>
 <%=f.text_area :content,:class=> "form-control"%>
 </div>
+<div class="form-group">
+  <%=f.label :category%>
+  <%=f.collection_select :category_ids,Category.all, :id,:name,prompt: "Please select"%>
+  <%= link_to "create category",new_category_path%>
+</div>
 <%=f.button :class=> "btn btn-default"%>
 <%end%>
