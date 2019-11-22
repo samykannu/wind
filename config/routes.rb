@@ -7,5 +7,6 @@ Rails.application.routes.draw do
         post :login_create
     end
   end
+  get 'logout',to: 'users#logout',as: 'logout'
   root 'users#login'
 end

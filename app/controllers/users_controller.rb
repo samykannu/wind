@@ -27,12 +27,22 @@ class UsersController < ApplicationController
   def login
   end
   def login_create
-    @user = User.where("email =? and password = ?", params[:post][:email], params[:post][:password]).last
-    if @user.present?
-      redirect_to @user
+    user = User.where("email =? and password = ?", params[:post][:email], params[:post][:password]).last
+    if user.present?
+      session[:user_id] = user.id
+      cookies[:logged_in] = {:value => true,:expires => 1.year.from_now}
+      cookies[:user_name] = {:value => user.name,:expires => 1.year.from_now}
+      redirect_to '/articles', notice: "Logged in!"
     else
-      render 'login'
+      flash.now.alert = "Email or password is invalid"
+      render "login"
     end
+  end
+  def logout
+    session[:user_id] = nil
+    cookies.delete :user_name
+    cookies.delete :logged_in
+    redirect_to root_url, notice: "Logged out!!!"
   end
 
   private
