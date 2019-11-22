@@ -9,7 +9,8 @@
 </div>
 <div class="form-group">
   <%=f.label :category%>
-  <%=f.collection_select :category_ids,Category.all, :id,:name,prompt: "Please select"%>
+  <%= f.select :category_ids, options_for_select(Category.all.map{|a|[a.name,a.id]}), {:include_blank => true, :multiple => true, :size =>30,prompt: "select"} %>
+  <%#=f.select :category_ids,Category.all,multiple: true%>
   <%= link_to "create category",new_category_path%>
 </div>
 <%=f.button :class=> "btn btn-default"%>

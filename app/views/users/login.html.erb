@@ -1,0 +1,8 @@
+<%="Login"%>
+<%=form_with(url: '/users/login_create',scope: 'post') do|f|%>
+<%=f.label :email%>
+<%=f.email_field :email%>
+<%=f.label :password%>
+<%=f.password_field :password%>
+<%=f.submit 'login'%>
+<%end%>

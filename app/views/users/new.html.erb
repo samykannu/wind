@@ -1,0 +1,5 @@
+<h4>Sign Up</h4>
+<%@user.errors.full_messages.each do|m|%>
+  <p><%=m%></p>
+<%end%>
+<%=render "form"%>
