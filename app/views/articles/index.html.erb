@@ -1,5 +1,6 @@
 <div class="container">
   <ul class="list-group">
+    <%=flash[:notice]%>
     <%@articles.each do|article|%>
     <li class="list-group-item"><%= article.title%><span style="padding-left: 50px;"><%=link_to "edit",edit_article_path(article)%></span><span style="padding-left: 50px;"><%=link_to "show",article_path(article)%></span></li>
     <%end%>

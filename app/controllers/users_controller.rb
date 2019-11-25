@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit,:show,:update]
+  skip_before_action :authenticate_user!, only: [:login,:new,:create,:update,:login_create]
   def new
     @user = User.new
   end
@@ -8,7 +9,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      session[:user_id] = @user.id
+      cookies[:logged_in] = {:value => true,:expires => 1.year.from_now}
+      cookies[:user_name] = {:value => @user.name,:expires => 1.year.from_now}
+      UserMailer.welcome_email(@user).deliver
+      redirect_to '/articles', notice:"logged in"
     else
       p @user.errors
       render 'new'
