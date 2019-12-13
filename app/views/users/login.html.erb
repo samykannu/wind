@@ -1,4 +1,5 @@
-<%="Login"%>
+<h3><%="Login"%></h3>
+<div class="login_page">
 <%=form_with(url: '/users/login_create',scope: 'post') do|f|%>
 <div class="form-group">
 <%=f.label :email%>
@@ -11,3 +12,4 @@
 <%=f.submit 'login'%>
 <%end%>
 <%=link_to"sign up",new_user_path%>
+</div>

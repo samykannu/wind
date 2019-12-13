@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       cookies[:logged_in] = {:value => true,:expires => 1.year.from_now}
       cookies[:user_name] = {:value => @user.name,:expires => 1.year.from_now}
-      UserMailer.welcome_email(@user).deliver
+      HardWorker.perform_async(@user)
       redirect_to '/articles', notice:"logged in"
     else
       p @user.errors
